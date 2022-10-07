@@ -1,0 +1,415 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+:root {
+    --bg-color: rgb(198, 209, 237);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+h2 {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.return {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.form_teamName {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+}
+
+.form_teamName label {
+  font-size: max(3vw, 2rem);
+  color: #fff
+}
+
+.form_teamName input {
+  width: 100%;
+  border: none;
+  background-color: var(--bg-color);
+  border-bottom: 2px solid white;
+  transition: border-bottom 400ms, box-shadow 400ms;
+  color: #c133cd;
+  font-size: 1.5rem;
+  box-shadow: 0 1rem 1rem -1rem white;
+  offset: none;
+}
+
+.form_teamName :is(input:focus, input:active) {
+  outline: none;
+  border-bottom: 2px solid #c133cd;
+  box-shadow: 0 1rem 1rem -1rem #c133cd;
+}
+
+.form_teamName button,
+.return-button {
+  background-color:rgba(0, 0, 0, 0);
+  border: 3px solid #c133cd;
+  color: #c133cd;
+  width: 10rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  transform: translateY(0rem);
+  transition: transform 400ms, border-color 400ms, color 400ms, box-shadow 400ms;
+  margin-bottom: 2rem;
+}
+
+.form_teamName :is(button:hover, button:focus):enabled,
+ .return :is(button:hover, button:focus):enabled {
+  outline: none;
+  transform: translateY(-0.5rem);
+  border-color: #33c1cd;
+  color: #33c1cd;
+  box-shadow:0 1rem 1rem -0.6rem #33c1cd;
+  cursor: pointer;
+}
+
+.form_teamName span {
+  position: absolute;
+  top: 10.2rem;
+  left: 0;
+  font-size: 0.9rem;
+  color:red;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1rem solid white;
+  z-index: 100;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+}
+
+.searchResults table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+}
+
+.searchResults table thead tr {
+  background-color: #33c1cd;
+  color: #ffffff;
+  text-align: left;
+}
+
+.searchResults table th,
+.searchResults table td {
+    padding: 12px 15px;
+}
+
+.searchResults table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.searchResults table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.searchResults table tbody tr:last-of-type {
+  border-bottom: 2px solid #33c1cd;
+}
+
+.searchResults table tbody tr.active-row {
+  font-weight: bold;
+  color: #33c1cd;
+}
+
+.searchResults table tbody tr:hover {
+  background-color: #33b1cd;
+  cursor: pointer;
+}
+
+.searchResults table img {
+  max-width: inherit;
+}
+
+.flaggenrahmen {
+  border: 1px solid black;
+}
+
+.results-group {
+  width: min(100%, 50rem);
+  margin-top: 3rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-bottom: 1px solid #33c1cd;
+}
+
+.results-competition {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  background-color:#33c1cd;
+}
+.results-group:first-child .results-competition {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.results-competition img {
+  width: 17px;
+  height: 17px;
+  margin-right: 0.5rem;
+}
+
+.results-result {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.results-penalty-shootout {
+  font-size: 0.75rem;
+}
+
+.results-match {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:0.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.results-match span {
+  width: 33.3%
+}
+
+.results-match span:nth-of-type(3) {
+  text-align: right;
+}
+
+.results-match img {
+  width: 17px;
+  height: 17px;
+  margin-inline: 1rem;
+}
+
+.results-group .results-result:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.results-group .results-result:nth-of-type(odd) {
+  background-color: #a3d3f3;
+}
+
+.results-score {
+  margin-inline: 0.5rem;
+  text-align: center;
+  color: blue;  
+}
+
+.results {
+  margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.greentext {
+  color: #25bb25;
+}
+
+.redtext {
+  color: red;
+}
+@media only screen and (max-width: 800px) {
+  .searchResults table td {
+    padding: 4px 15px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+
+  .searchResults table tr td img {
+    height: 100%;
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+
+  .searchResults table {
+    border: 0;
+    border-radius: 0;
+    min-width: 90vw;
+  }
+
+  .searchResults table tr {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0;
+  }
+
+  .searchResults table tr td {
+    display:flex;
+    justify-content: space-between;
+  }
+
+  .searchResults table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .searchResults table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .club-image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .results-result {
+    padding-left: 0.2rem;
+  }
+  .results-match {
+    padding: 0.5rem 0;
+  }
+  .results-match img {
+    margin-inline: 0.5rem;
+  }
+}
+
+
