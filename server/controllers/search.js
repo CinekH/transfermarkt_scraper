@@ -8,7 +8,7 @@ export const searchTeam = async (req, res) => {
         waitUntil: 'networkidle2',
     });
     const searchingResults = await page.evaluate(() => {
-        const tables = document.querySelectorAll('.table-header');
+        const tables = document.querySelectorAll('.large-12');
         const tableHeaders = Array.from(tables, table => table.innerHTML);
         const teamTableIndex = tableHeaders.findIndex((element) => {return element.includes('Lista drużyn')});
         const rows = document.querySelectorAll(`#yw${teamTableIndex} table tr`);
@@ -18,7 +18,6 @@ export const searchTeam = async (req, res) => {
         })
         return arrayOfRows;
     });
-
     await browser.close();
     res.status(200).json(searchingResults);
 }
